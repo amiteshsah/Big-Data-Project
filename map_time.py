@@ -5,8 +5,13 @@ import sys
 import os
 import csv
 
+firstline = True
 for line in sys.stdin:
 	data=list(csv.reader([line],delimiter=','))[0]
+	if firstline:    #skip first line
+		firstline = False
+		continue
+
 	CMPLNT_NUM= data[1]
 	CMPLNT_FR_DT=data[2]
 	CMPLNT_FR_TM=data[3]
@@ -33,8 +38,7 @@ for line in sys.stdin:
 	Lat_Lon=data[24]
 
 	
-	print '%s\t%s' % ((CMPLNT_NUM), \
-		str(CMPLNT_FR_DT)+str(', ') \
+	print '%s\t%s' % ((CMPLNT_NUM),str(CMPLNT_FR_DT)+str(', ') \
 		+str(CMPLNT_FR_TM)+str(', ') \
 		+str(CMPLNT_TO_DT)+str(', ') \
 		+str(CMPLNT_TO_TM)+str(', ') \
