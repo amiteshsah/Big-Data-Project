@@ -248,13 +248,15 @@ def X_COORD_CD_check(X_COORD_CD_20):
 	x_coord=X_COORD_CD_20[20]
 	try:
 		x_coord=float(x_coord)
+		#print(x_coord)
 		if x_coord<=1816290.753 and x_coord>127167.718:
-			valid_X_COORD_CD+=1
+			pass
+			#valid_X_COORD_CD+=1
 			#return valid_X_COORD_CD
 			#return 'COORDINATE, State plane coordinate , VALID'
 
 		else:
-			invalid_X_COORD_CD+=1
+			#invalid_X_COORD_CD+=1
 			X_COORD_CD_20[20] = "INAVLID"
 
 			#return invalid_X_COORD_CD
@@ -275,7 +277,8 @@ def Y_COORD_CD_check(Y_COORD_CD_21):
 	try:
 		y_coord=float(y_coord)
 		if y_coord<=1598787.575 and y_coord>=-509684.437:
-			valid_Y_COORD_CD+=1
+			pass
+			#valid_Y_COORD_CD+=1
 			#return valid_Y_COORD_CD
 			#return 'COORDINATE, State plane coordinate , VALID'
 		else:
