@@ -9,7 +9,7 @@ current = None
 count = 0	
 def dateValidator(line):
 	key,value = line.split("\t")
-	KY_CD=ast.literal_eval(value)[7].strip()
+	KY_CD=ast.literal_eval(value)[5].strip()
 	if len(KY_CD) == 0:
 		print KY_CD +"CODE, "+"KEY CODE	"+"NULL"
 

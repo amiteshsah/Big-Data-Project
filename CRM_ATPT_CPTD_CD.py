@@ -13,7 +13,7 @@ count = 0
 def dateValidator(line):
 	helper = True
 	key,value = line.split("\t")
-	KY_CD=ast.literal_eval(value)[11].strip()
+	KY_CD=ast.literal_eval(value)[9].strip()
 	if len(KY_CD) == 0:
 		print KY_CD +" String" + " Attempted status"+ " NULL"
 	for i in attempt:

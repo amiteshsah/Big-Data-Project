@@ -98,7 +98,7 @@ for line in sys.stdin:
 	#X_COORD_CD_20=ast.literal_eval(value)[20].strip()
 	#X_COORD_CD=X_COORD_CD_check(X_COORD_CD_20)
 
-	Y_COORD_CD_21=ast.literal_eval(value)[21].strip()
+	Y_COORD_CD_21=ast.literal_eval(value)[19].strip()
 	Y_COORD_CD=Y_COORD_CD_check(Y_COORD_CD_21)
 
 	print Y_COORD_CD_21+" "+ Y_COORD_CD

@@ -27,7 +27,7 @@ def CMPLNT_FR_TM_check(CMPLNT_FR_TM_1):
 	global invalid_CMPLNT_FR_TM
 	global null_CMPLNT_FR_TM
 
-	curr_time=CMPLNT_FR_TM_1
+	curr_time=CMPLNT_FR_TM_1[1]
 	if re.match('\d{2}:\d{2}:\d{2}', curr_time):
 		try:
 			if time.strptime(curr_time, '%H:%M:%S'):
