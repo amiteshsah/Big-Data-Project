@@ -11,7 +11,7 @@ count = 0
 def dateValidator(line):
 	key,value = line.split("\t")
 	date=ast.literal_eval(value)[6].strip()
-	print(date)
+	#print(date)
 	if(date == ""):
 		print(date, "DATETIME", "Complaint from date", "NULL")
 	try:

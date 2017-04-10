@@ -16,7 +16,7 @@ def dateValidator(line):
 	try:
 		validate = datetime.datetime.strptime(date, '%m/%d/%Y')
 		validate = str(validate).split()
-		tokens = str(validate[0]).split("-")
+		tokens = str(validate[4]).split("-")
 		if(int(tokens[0]) > 2006 and int(tokens[0]) <2017):
 			print(date, "DATETIME", "Complaint from date", "VALID")	
 		else:
