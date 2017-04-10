@@ -371,6 +371,7 @@ for line in sys.stdin:
 	temp_valriable = PREM_TYP_DESC_Validator(temp_valriable)
 	temp_valriable = PARKS_NM_Validator(temp_valriable)
 	temp_valriable = HADEVELOPT_Validator(temp_valriable)
+	temp_valriable = LOC_OF_OCCUR_DESC_Validator(temp_valriable)
 	temp_valriable = [[key] + temp_valriable]
 	writer.writerows(temp_valriable)
 	#print(temp_valriable)
