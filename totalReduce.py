@@ -307,6 +307,6 @@ for line in sys.stdin:
 	temp_valriable = PD_CD_Validator(temp_valriable)
 	temp_valriable = X_COORD_CD_check(temp_valriable)
 	temp_valriable	= Y_COORD_CD_check(temp_valriable)
-	temp_valriable = [key] + temp_valriable
-	#writer.writerows(temp_valriable)
-	print(temp_valriable)
+	temp_valriable = [[key] + temp_valriable]
+	writer.writerows(temp_valriable)
+	#print(temp_valriable)
