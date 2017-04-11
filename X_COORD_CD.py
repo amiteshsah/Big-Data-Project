@@ -95,7 +95,7 @@ for line in sys.stdin:
 	#CMPLNT_FR_TM_1=ast.literal_eval(value)[1].strip()
 	#CMPLNT_FR_TM=CMPLNT_FR_TM_check(CMPLNT_FR_TM_1)
 
-	X_COORD_CD_20=ast.literal_eval(value)[20].strip()
+	X_COORD_CD_20=ast.literal_eval(value)[18].strip()
 	X_COORD_CD=X_COORD_CD_check(X_COORD_CD_20)
 
 	#Y_COORD_CD_21=ast.literal_eval(value)[21].strip()

@@ -43,8 +43,6 @@ for line in sys.stdin:
 		CMPLNT_FR_TM, \
 		CMPLNT_TO_DT, \
 		CMPLNT_TO_TM, \
-		CMPLNT_TO_DT, \
-		CMPLNT_TO_TM, \
 		RPT_DT, \
 		KY_CD, \
 		OFNS_DESC, \

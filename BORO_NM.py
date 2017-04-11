@@ -13,7 +13,7 @@ count = 0
 def dateValidator(line):
 	helper = True
 	key,value = line.split("\t")
-	KY_CD=ast.literal_eval(value)[14].strip()
+	KY_CD=ast.literal_eval(value)[12].strip()
 	KY_CD.upper()
 	if len(KY_CD) == 0:
 		print KY_CD +" String" + " BORO NAME"+ " NULL"
