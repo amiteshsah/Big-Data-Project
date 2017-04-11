@@ -411,7 +411,7 @@ def Lat_Lon_validator(line):
 
 	try:
 		# consp = truct point based on lat/long returned by geocoder
-		Lat_Lon_24=ast.literal_eval(line[24])
+		Lat_Lon_24=ast.literal_eval(line[22])
 		point=Point(float(Lat_Lon_24[1]),float(Lat_Lon_24[0]))
 		# check each polygon to see if it contains the point
 		flag=0
@@ -423,9 +423,9 @@ def Lat_Lon_validator(line):
 		if flag==1:
 			pass
 		else:
-			line[24]="INVALID"
+			line[22]="INVALID"
 	except:
-		line[24]="NULL"
+		line[22]="NULL"
 	return line
 			
 
@@ -434,9 +434,9 @@ def Lat_Lon_and_BORO_NM_validator(line):
 	new_borough=""
 	try:
 		# consp = truct point based on lat/long returned by geocoder
-		Lat_Lon_24=ast.literal_eval(line[24])
+		Lat_Lon_24=ast.literal_eval(line[22])
 		point=Point(float(Lat_Lon_24[1]),float(Lat_Lon_24[0]))
-		BORO_NM=ast.literal_eval(value)[14].strip()
+		BORO_NM=ast.literal_eval(value)[12].strip()
 		if BORO_NM != "":
 			BORO_NM.upper()
 		# check each polygon to see if it contains the point
@@ -456,41 +456,18 @@ def Lat_Lon_and_BORO_NM_validator(line):
 			# print line
 	except:
 		# print line
-		if flag==1 and ast.literal_eval(value)[14].strip()=="":
-			line[14]=new_borough
-		elif ast.literal_eval(value)[14].strip()!="" :
+		if flag==1 and ast.literal_eval(value)[12].strip()=="":
+			line[12]=new_borough
+		elif ast.literal_eval(value)[12].strip()!="" :
 			pass
 		else:
-			line[14]="NULL"
+			line[12]="NULL"
 		# print "null"
 		# print line
 	return line
 
 
 for line in sys.stdin:
-<<<<<<< HEAD
-        #dateValidator(line)	
-	key,value = line.split("\t")
-	objectValue=ast.literal_eval(value)
-	temp_valriable = ADDR_PCT_CD_Validator(objectValue)
-	temp_valriable = BORO_NM_Validator(temp_valriable)
-	temp_valriable	= CMPLNT_FR_DT_validator(temp_valriable)
-	temp_valriable = CMPLNT_FR_TM_check(temp_valriable)
-	temp_valriable = CMPLNT_TO_DT_Validator(temp_valriable)
-	temp_valriable = CMPLNT_FR_TM_check(temp_valriable)
-	temp_valriable	= CRM_ATPT_CPTD_CD_Validator(temp_valriable)
-	temp_valriable = KY_CD_Validator(temp_valriable)
-	temp_valriable = Lat_Long_Validator(temp_valriable)
-	temp_valriable	= LAW_CAT_CD_Validator(temp_valriable)
-	temp_valriable = PD_CD_Validator(temp_valriable)
-	temp_valriable = X_COORD_CD_check(temp_valriable)
-	temp_valriable	= Y_COORD_CD_check(temp_valriable)
-	temp_valriable	= Lat_Lon_validator(temp_valriable)
-	temp_valriable	= Lat_Lon_and_BORO_NM_validator(temp_valriable)
-	temp_valriable = [[key] + temp_valriable]
-	writer.writerows(temp_valriable)
-	#print(temp_valriable)
-=======
     # dateValidator(line)
     key, value = line.split("\t")
     objectValue = ast.literal_eval(value)
@@ -517,4 +494,3 @@ for line in sys.stdin:
     temp_valriable = [[key] + temp_valriable]
     writer.writerows(temp_valriable)
 # print(temp_valriable)
->>>>>>> 60e7798c0fc8328f052412d54cd3b5fbb1a85cb8
