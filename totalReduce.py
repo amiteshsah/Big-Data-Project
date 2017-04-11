@@ -7,6 +7,11 @@ import difflib
 import re
 import time
 import csv
+from shapely import geometry
+import json
+from shapely.geometry import shape, Point
+
+
 
 BOROUGHS = ["BRONX","QUEENS","BROOKLYN","MANHATTAN","STATEN ISLAND"]
 attempt = ["COMPLETED","ATTEPMTED"]
@@ -293,6 +298,72 @@ def Y_COORD_CD_check(Y_COORD_CD_21):
 		Y_COORD_CD_21[21] = "NULL"
 	return Y_COORD_CD_21	
 
+try:
+	with open ('./query.txt', 'r') as f:
+		js = json.load(f)
+except Exception as e:
+	print(e)    	
+
+def Lat_Lon_validator(line):
+
+	try:
+		# consp = truct point based on lat/long returned by geocoder
+		Lat_Lon_24=ast.literal_eval(line[24])
+		point=Point(float(Lat_Lon_24[1]),float(Lat_Lon_24[0]))
+		# check each polygon to see if it contains the point
+		flag=0
+		for feature in js['features']: 
+			polygon = shape(feature['geometry'])
+			if polygon.contains(point):
+				flag=1
+				break
+		if flag==1:
+			pass
+		else:
+			line[24]="INVALID"
+	except:
+		line[24]="NULL"
+	return line
+			
+
+def Lat_Lon_and_BORO_NM_validator(line):
+	flag=0
+	new_borough=""
+	try:
+		# consp = truct point based on lat/long returned by geocoder
+		Lat_Lon_24=ast.literal_eval(line[24])
+		point=Point(float(Lat_Lon_24[1]),float(Lat_Lon_24[0]))
+		BORO_NM=ast.literal_eval(value)[14].strip()
+		if BORO_NM != "":
+			BORO_NM.upper()
+		# check each polygon to see if it contains the point
+		for feature in js['features']: 
+			polygon = shape(feature['geometry'])
+			if polygon.contains(point) and (feature['properties']['BoroName'].upper()==BORO_NM):
+				new_borough=feature['properties']['BoroName'].upper()
+				flag=1
+				break
+		if flag==1:
+			pass
+		else:
+			# print line
+			# print "invalid"
+			# print BORO_NM, Lat_Lon_24,feature['properties']['BoroName'].upper()
+			line[14]=feature['properties']['BoroName'].upper()
+			# print line
+	except:
+		# print line
+		if flag==1 and ast.literal_eval(value)[14].strip()=="":
+			line[14]=new_borough
+		elif ast.literal_eval(value)[14].strip()!="" :
+			pass
+		else:
+			line[14]="NULL"
+		# print "null"
+		# print line
+	return line
+
+
 for line in sys.stdin:
         #dateValidator(line)	
 	key,value = line.split("\t")
@@ -310,6 +381,8 @@ for line in sys.stdin:
 	temp_valriable = PD_CD_Validator(temp_valriable)
 	temp_valriable = X_COORD_CD_check(temp_valriable)
 	temp_valriable	= Y_COORD_CD_check(temp_valriable)
+	temp_valriable	= Lat_Lon_validator(temp_valriable)
+	temp_valriable	= Lat_Lon_and_BORO_NM_validator(temp_valriable)
 	temp_valriable = [[key] + temp_valriable]
 	writer.writerows(temp_valriable)
 	#print(temp_valriable)
