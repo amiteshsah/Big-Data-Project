@@ -557,5 +557,5 @@ for line in sys.stdin:
     temp_valriable = Lattitude_check(temp_valriable)
     temp_valriable = Longitue_check(temp_valriable)
     temp_valriable = [[key] + temp_valriable]
-    writer.writerows(temp_valriable)
-    #print temp_valriable
+    #writer.writerows(temp_valriable)
+    print temp_valriable
