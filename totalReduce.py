@@ -474,33 +474,69 @@ def Lat_Lon_and_BORO_NM_validator(line):
 	return line
 
 
+def Lattitude_check(line):
+    Lat = line[20]
+    Lat = Lat.strip()
+    if len(Lat) == 0 or "INVALID" or "NULL"
+        # print Lat +"String, "+"Lat   "+"NULL"
+        line[20] = "NULL" 
+        return line
+    Lat_Lon_24 = ast.literal_eval(line[22])
+    #Lat_Lon_24 = (line[22]).split("(")
+    #Lat_Lon_24 = Lat_Lon_24[1].split(",")
+    #print Lat_Lon_24[0]
+
+    
+    if float(Lat) == float((Lat_Lon_24[0])):
+        pass
+    else:
+            #print "INVALID"
+            line[21] = "INVALID"
+    return line
+
+#Column No 23:Longitude
+def Longitue_check(line):
+    Lon = line[21]
+    Lon = Lon.strip()
+    
+    if len(Lon) == 0 or "INVALID" or "NULL":
+            # print Lat +"String, "+"Lat   "+"NULL"
+        line[21] = "NULL"
+        return line
+    Lat_Lon_24 = ast.literal_eval(line[22])    
+    if float(Lon) == float(Lat_Lon_24[1]):
+        pass
+    else:
+            line[21] = "INVALID"
+            #line[20] = (Lat_Lon_24[1])
+    return line
+
 for line in sys.stdin:
     # dateValidator(line)
-	key, value = line.split("\t")
-	objectValue = ast.literal_eval(value)
-	temp_valriable = ADDR_PCT_CD_Validator(objectValue)
-	temp_valriable = BORO_NM_Validator(temp_valriable)
-	temp_valriable = CMPLNT_FR_DT_validator(temp_valriable)
-	temp_valriable = CMPLNT_FR_TM_check(temp_valriable)
-	temp_valriable = CMPLNT_TO_DT_Validator(temp_valriable)
-	temp_valriable = CMPLNT_TO_TM_check(temp_valriable)
-	temp_valriable = CRM_ATPT_CPTD_CD_Validator(temp_valriable)
-	temp_valriable = KY_CD_Validator(temp_valriable)
-	temp_valriable = Lat_Long_Validator(temp_valriable)
-	temp_valriable = LAW_CAT_CD_Validator(temp_valriable)
-	temp_valriable = PD_CD_Validator(temp_valriable)
-	temp_valriable = X_COORD_CD_check(temp_valriable)
-	temp_valriable = Y_COORD_CD_check(temp_valriable)
-	temp_valriable = PD_DESC_Validator(temp_valriable)
-	temp_valriable = JURIS_DESC_Validator(temp_valriable)
-	temp_valriable = ADDR_PCT_CD_Validator(temp_valriable)
-	temp_valriable = PREM_TYP_DESC_Validator(temp_valriable)
-	temp_valriable = PARKS_NM_Validator(temp_valriable)
-	temp_valriable = HADEVELOPT_Validator(temp_valriable)
-	temp_valriable = LOC_OF_OCCUR_DESC_Validator(temp_valriable)
-	temp_valriable = [[key] + temp_valriable]
-	writer.writerows(temp_valriable)
-	#print temp_valriable
-
-
-
+    key, value = line.split("\t")
+    objectValue = ast.literal_eval(value)
+    temp_valriable = ADDR_PCT_CD_Validator(objectValue)
+    temp_valriable = BORO_NM_Validator(temp_valriable)
+    temp_valriable = CMPLNT_FR_DT_validator(temp_valriable)
+    temp_valriable = CMPLNT_FR_TM_check(temp_valriable)
+    temp_valriable = CMPLNT_TO_DT_Validator(temp_valriable)
+    temp_valriable = CMPLNT_TO_TM_check(temp_valriable)
+    temp_valriable = CRM_ATPT_CPTD_CD_Validator(temp_valriable)
+    temp_valriable = KY_CD_Validator(temp_valriable)
+    temp_valriable = Lat_Long_Validator(temp_valriable)
+    temp_valriable = LAW_CAT_CD_Validator(temp_valriable)
+    temp_valriable = PD_CD_Validator(temp_valriable)
+    temp_valriable = X_COORD_CD_check(temp_valriable)
+    temp_valriable = Y_COORD_CD_check(temp_valriable)
+    temp_valriable = PD_DESC_Validator(temp_valriable)
+    temp_valriable = JURIS_DESC_Validator(temp_valriable)
+    temp_valriable = ADDR_PCT_CD_Validator(temp_valriable)
+    temp_valriable = PREM_TYP_DESC_Validator(temp_valriable)
+    temp_valriable = PARKS_NM_Validator(temp_valriable)
+    temp_valriable = HADEVELOPT_Validator(temp_valriable)
+    temp_valriable = LOC_OF_OCCUR_DESC_Validator(temp_valriable)
+    temp_valriable = Lattitude_check(temp_valriable)
+    temp_valriable = Longitue_check(temp_valriable)
+    temp_valriable = [[key] + temp_valriable]
+    writer.writerows(temp_valriable)
+    #print temp_valriable
