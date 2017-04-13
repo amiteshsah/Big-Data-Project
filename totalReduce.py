@@ -477,16 +477,23 @@ def Lat_Lon_and_BORO_NM_validator(line):
 def Lattitude_check(line):
     Lat = line[20]
     Lat = Lat.strip()
-    if len(Lat) == 0 or "INVALID" or "NULL":
+    if len(Lat) ==0:
         # print Lat +"String, "+"Lat   "+"NULL"
         line[20] = "NULL" 
         return line
-    Lat_Lon_24 = ast.literal_eval(line[22])
+    try:    
+        if(line[22] !="NULL" or line[22] !="INVALID"):
+            Lat_Lon_24 = ast.literal_eval(line[22])
     #Lat_Lon_24 = (line[22]).split("(")
     #Lat_Lon_24 = Lat_Lon_24[1].split(",")
     #print Lat_Lon_24[0]
+        else:
+            line[20] = "NULL" 
+            return line
+    except: 
+           line[20] = "NULL" 
+           return line    
 
-    
     if float(Lat) == float((Lat_Lon_24[0])):
         pass
     else:
@@ -499,11 +506,23 @@ def Longitue_check(line):
     Lon = line[21]
     Lon = Lon.strip()
     
-    if len(Lon) == 0 or "INVALID" or "NULL":
+    if len(Lon) == 0:
             # print Lat +"String, "+"Lat   "+"NULL"
         line[21] = "NULL"
         return line
-    Lat_Lon_24 = ast.literal_eval(line[22])    
+    try:    
+        if(line[22] !="NULL" or line[22] !="INVALID"):
+            Lat_Lon_24 = ast.literal_eval(line[22])
+    #Lat_Lon_24 = (line[22]).split("(")
+    #Lat_Lon_24 = Lat_Lon_24[1].split(",")
+    #print Lat_Lon_24[0]
+        else:
+            line[21] = "NULL" 
+            return line
+    except: 
+           line[21] = "NULL" 
+           return line           
+
     if float(Lon) == float(Lat_Lon_24[1]):
         pass
     else:
