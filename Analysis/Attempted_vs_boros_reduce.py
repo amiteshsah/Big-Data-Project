@@ -14,7 +14,7 @@ for line in sys.stdin:
 
 	else :
 		if current:
-			print(attempt)
+			print(current+"\t"+str(attempt))
 			attempt = {"COMPLETED":0, "ATTEPMTED":0}
 			val = attempt[value]
 			val = val+1
@@ -26,4 +26,4 @@ for line in sys.stdin:
 			val = val+1
 			attempt[value] = val;
 
-print(attempt)			
+print(current+"\t"+str(attempt))			
