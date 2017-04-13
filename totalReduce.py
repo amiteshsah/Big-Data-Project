@@ -477,7 +477,7 @@ def Lat_Lon_and_BORO_NM_validator(line):
 def Lattitude_check(line):
     Lat = line[20]
     Lat = Lat.strip()
-    if len(Lat) == 0 or "INVALID" or "NULL"
+    if len(Lat) == 0 or "INVALID" or "NULL":
         # print Lat +"String, "+"Lat   "+"NULL"
         line[20] = "NULL" 
         return line
