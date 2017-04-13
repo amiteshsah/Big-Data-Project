@@ -498,7 +498,7 @@ def Lattitude_check(line):
         pass
     else:
             #print "INVALID"
-            line[21] = "INVALID"
+            line[20] = "INVALID"
     return line
 
 #Column No 23:Longitude
