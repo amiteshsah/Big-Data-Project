@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import sys
 import string
 import os
@@ -12,12 +13,11 @@ import json
 from shapely.geometry import shape, Point
 
 
-
 BOROUGHS = ["BRONX", "QUEENS", "BROOKLYN", "MANHATTAN", "STATEN ISLAND"]
 attempt = ["COMPLETED", "ATTEPMTED"]
 crime_Type = ["FELONY", "MISDEMEANOR", "VIOLATION"]
-f = open("output.csv", "wb")
-writer = csv.writer(f)
+#f = open("output.csv", "wb")
+#writer = csv.writer(f)
 
 #Column No 2: CMPLNT_FR_DT
 
@@ -437,70 +437,78 @@ def Lat_Lon_validator(line):
 			
 
 def Lat_Lon_and_BORO_NM_validator(line):
-	flag=0
-	new_borough=""
-	try:
-		# consp = truct point based on lat/long returned by geocoder
-		Lat_Lon_24=ast.literal_eval(line[22])
-		point=Point(float(Lat_Lon_24[1]),float(Lat_Lon_24[0]))
-		BORO_NM=ast.literal_eval(value)[12].strip()
-		if BORO_NM != "":
-			BORO_NM.upper()
-		# check each polygon to see if it contains the point
-		for feature in js['features']: 
-			polygon = shape(feature['geometry'])
-			if polygon.contains(point) and (feature['properties']['BoroName'].upper()==BORO_NM):
-				new_borough=feature['properties']['BoroName'].upper()
-				flag=1
-				break
-		if flag==1:
-			pass
-		else:
-			# print line
-			# print "invalid"
-			# print BORO_NM, Lat_Lon_24,feature['properties']['BoroName'].upper()
-			line[14]=feature['properties']['BoroName'].upper()
-			# print line
-	except:
-		# print line
-		if flag==1 and ast.literal_eval(value)[12].strip()=="":
-			line[12]=new_borough
-		elif ast.literal_eval(value)[12].strip()!="" :
-			pass
-		else:
-			line[12]="NULL"
-		# print "null"
-		# print line
-	return line
+    flag=0
+    new_borough=""
+    try:
+    	# consp = truct point based on lat/long returned by geocoder
+    	Lat_Lon_24=ast.literal_eval(line[22])
+    	point=Point(float(Lat_Lon_24[1]),float(Lat_Lon_24[0]))
+    	BORO_NM=ast.literal_eval(value)[12].strip()
+    	if BORO_NM != "":
+    		BORO_NM.upper()
+    	# check each polygon to see if it contains the point
+    	for feature in js['features']: 
+    		polygon = shape(feature['geometry'])
+    		if polygon.contains(point) and (feature['properties']['BoroName'].upper()==BORO_NM):
+    			new_borough=feature['properties']['BoroName'].upper()
+    			flag=1
+    			break
+    	if flag==1:
+    		pass
+    	else:
+    		# print line
+    		# print "invalid"
+    		# print BORO_NM, Lat_Lon_24,feature['properties']['BoroName'].upper()
+    		line[14]=feature['properties']['BoroName'].upper()
+    		# print line
+    except:
+    	# print line
+    	if flag==1 and ast.literal_eval(value)[12].strip()=="":
+    		line[12]=new_borough
+    	elif ast.literal_eval(value)[12].strip()!="" :
+    		pass
+    	else:
+    		line[12]="NULL"
+    	# print "null"
+    	# print line
+    return line
 
 
 for line in sys.stdin:
     # dateValidator(line)
-	key, value = line.split("\t")
-	objectValue = ast.literal_eval(value)
-	temp_valriable = ADDR_PCT_CD_Validator(objectValue)
-	temp_valriable = BORO_NM_Validator(temp_valriable)
-	temp_valriable = CMPLNT_FR_DT_validator(temp_valriable)
-	temp_valriable = CMPLNT_FR_TM_check(temp_valriable)
-	temp_valriable = CMPLNT_TO_DT_Validator(temp_valriable)
-	temp_valriable = CMPLNT_TO_TM_check(temp_valriable)
-	temp_valriable = CRM_ATPT_CPTD_CD_Validator(temp_valriable)
-	temp_valriable = KY_CD_Validator(temp_valriable)
-	temp_valriable = Lat_Long_Validator(temp_valriable)
-	temp_valriable = LAW_CAT_CD_Validator(temp_valriable)
-	temp_valriable = PD_CD_Validator(temp_valriable)
-	temp_valriable = X_COORD_CD_check(temp_valriable)
-	temp_valriable = Y_COORD_CD_check(temp_valriable)
-	temp_valriable = PD_DESC_Validator(temp_valriable)
-	temp_valriable = JURIS_DESC_Validator(temp_valriable)
-	temp_valriable = ADDR_PCT_CD_Validator(temp_valriable)
-	temp_valriable = PREM_TYP_DESC_Validator(temp_valriable)
-	temp_valriable = PARKS_NM_Validator(temp_valriable)
-	temp_valriable = HADEVELOPT_Validator(temp_valriable)
-	temp_valriable = LOC_OF_OCCUR_DESC_Validator(temp_valriable)
-	temp_valriable = [[key] + temp_valriable]
-	writer.writerows(temp_valriable)
-	#print temp_valriable
+    key, value = line.split("\t")
+    objectValue = ast.literal_eval(value)
+    temp_valriable = ADDR_PCT_CD_Validator(objectValue)
+    # temp_valriable = BORO_NM_Validator(temp_valriable)
+    # temp_valriable = CMPLNT_FR_DT_validator(temp_valriable)
+    # temp_valriable = CMPLNT_FR_TM_check(temp_valriable)
+    # temp_valriable = CMPLNT_TO_DT_Validator(temp_valriable)
+    # temp_valriable = CMPLNT_TO_TM_check(temp_valriable)
+    # temp_valriable = CRM_ATPT_CPTD_CD_Validator(temp_valriable)
+    # temp_valriable = KY_CD_Validator(temp_valriable)
+    # temp_valriable = Lat_Long_Validator(temp_valriable)
+    # temp_valriable = LAW_CAT_CD_Validator(temp_valriable)
+    # temp_valriable = PD_CD_Validator(temp_valriable)
+    # temp_valriable = X_COORD_CD_check(temp_valriable)
+    # temp_valriable = Y_COORD_CD_check(temp_valriable)
+    # temp_valriable = PD_DESC_Validator(temp_valriable)
+    # temp_valriable = JURIS_DESC_Validator(temp_valriable)
+    # temp_valriable = ADDR_PCT_CD_Validator(temp_valriable)
+    # temp_valriable = PREM_TYP_DESC_Validator(temp_valriable)
+    # temp_valriable = PARKS_NM_Validator(temp_valriable)
+    # temp_valriable = HADEVELOPT_Validator(temp_valriable)
+    # temp_valriable = LOC_OF_OCCUR_DESC_Validator(temp_valriable)
+    temp_valriable  = Lat_Lon_validator(temp_valriable)
+    #temp_valriable  = Lat_Lon_and_BORO_NM_validator(temp_valriable)
+    #temp_valriable[8]='"'+temp_valriable[8]+'"'
+    #temp_valriable[22]='"'+str(temp_valriable[22])+'"'
+    #print(str(key)+'|'+'%s' % '|'.join(map(str, temp_valriable)))
+    print temp_valriable[22]
+
+    #print '%s\t%s' % (key,(temp_valriable))
+	#temp_valriable = [[key] + temp_valriable]
+	#writer.writerows(temp_valriable)
+	#print(str(temp_valriable[0]))[1:-1]
 
 
 
