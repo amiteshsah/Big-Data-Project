@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # map function to find all parking violation that have been paid
 
 import sys
@@ -37,6 +37,11 @@ for line in sys.stdin:
 	Longitude=data[23]
 	Lat_Lon=data[24]
 
+
+	# mylist=[CMPLNT_FR_DT,CMPLNT_FR_TM,CMPLNT_TO_DT,CMPLNT_TO_TM,RPT_DT,KY_CD,OFNS_DESC,PD_CD,PD_DESC,CRM_ATPT_CPTD_CD,LAW_CAT_CD,JURIS_DESC,BORO_NM,ADDR_PCT_CD,LOC_OF_OCCUR_DESC,PREM_TYP_DESC,PARKS_NM,HADEVELOPT,X_COORD_CD,Y_COORD_CD,Latitude,Longitude,Lat_Lon]
+	# print mylist
+	# #print '%s\t[%s]' % CMPLNT_NUM,''.join(map(str, mylist))
+	# #print '%s\t[%s]' % ((CMPLNT_NUM),[CMPLNT_FR_DT,CMPLNT_FR_TM,CMPLNT_TO_DT])
 
 
 	print '%s\t%s' % ((CMPLNT_NUM),str([CMPLNT_FR_DT, \
