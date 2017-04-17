@@ -1,9 +1,9 @@
 # Big-Data-Project
-Cleaning and Analysis of NYC crime data and further investigate relationship with other dataset.
+Cleaning and Analysis of NYC crime data and further investigate relationship with other dataset(s).
 
 Archive Contents:
 
-Analysis: It contains the map reduce python code for the analysis of NYC Crime data.
+Analysis: Implemented with Hadoop map reduce using python for the analysis of NYC Crime data.
   1)Attempted_vs_Boroughs_map.py and Attempted_vs_Boroughs_reduce.py
   2)CrimeDesc_vs_Boroughs_map.py and CrimeDesc_vs_Boroughs_reduce.py
   3)CrimeTypes_vs_Boroughs_map.py and CrimeTypes_vs_Boroughs_reduce.py
@@ -13,7 +13,10 @@ Analysis: It contains the map reduce python code for the analysis of NYC Crime d
   7)FMVcount_vs_Year_map.py and FMVcount_vs_Year_reduce.py
   8)MajorCrimeRate_vs_Boroughs_map.py and MajorCrimeRate_vs_Boroughs_reduce.py
 
-ColumnValidators : It contains map code for all the columns to check if the value is valid, invalid or null. There is a common reduce                       function
+ColumnValidators : It contains map code for all the columns to check if the value is valid, invalid or null. 
+There is a common reduce function to create single cleaned file
+File Details:
+
   1)CMPLNT_NUM_Validator_map.py
   2)CMPLNT_FR_DT_Validator_map.py
   3)CMPLNT_FR_TM_Validator_map.py
