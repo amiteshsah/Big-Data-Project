@@ -255,7 +255,7 @@ def JURIS_DESC_Validator(line):
     # key,value = line.split("\t")
     if len(JURIS_DESC) == 0:
         #return JURIS_DESC + "\t" + "TEXT JURIS_DESC, NULL"
-	line[11] = "NULL"
+	   line[11] = "NULL"
     else:
         for i in juris:
             seq = difflib.SequenceMatcher(None, i, value,)
