@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 #!/usr/bin/env python
 
+=======
+>>>>>>> 4e1e14d6e29c6a9e052f66e72a6bee85d295f02e
 import sys
 import string
 import os
@@ -21,5 +24,9 @@ for line in sys.stdin:
         first_line = False
         continue
     data = list(csv.reader([line], delimiter=','))[0]
+<<<<<<< HEAD
     PREM_TYP_DESC = str(data[16])
+=======
+    PREM_TYP_DESC = str(data[17])
+>>>>>>> 4e1e14d6e29c6a9e052f66e72a6bee85d295f02e
     print(prem_type_desc_Validator(PREM_TYP_DESC))

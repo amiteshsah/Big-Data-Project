@@ -1,14 +1,27 @@
+<<<<<<< HEAD
 #!/usr/bin/env python
+=======
+#!/usr/bin/env python3
+>>>>>>> 4e1e14d6e29c6a9e052f66e72a6bee85d295f02e
 import sys
 sys.path.append('.')
 from shapely import geometry
 import json
+<<<<<<< HEAD
 #from shapely.geometry import shape, Point
 import ast
 import csv
 import shapely
 try:
 	with open ('/home/pgb252/project1/cleaning/ColumnValidators/query.txt', 'r') as f:
+=======
+from shapely.geometry import shape, Point
+import ast
+import csv
+
+try:
+	with open ('./query.txt', 'r') as f:
+>>>>>>> 4e1e14d6e29c6a9e052f66e72a6bee85d295f02e
 		js = json.load(f)
 except Exception as e:
 	print(e)
@@ -91,7 +104,11 @@ for line in sys.stdin:
     if firstline:    #skip first line
         firstline = False
         continue
+<<<<<<< HEAD
     Lat_Lon=data[23].strip()
+=======
+    Lat_Lon=data[24].strip()
+>>>>>>> 4e1e14d6e29c6a9e052f66e72a6bee85d295f02e
     print(Lat_Lon_validator(Lat_Lon))
 
 

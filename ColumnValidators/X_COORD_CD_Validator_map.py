@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #!/usr/bin/env python
+=======
+#!/usr/bin/env python3
+>>>>>>> 4e1e14d6e29c6a9e052f66e72a6bee85d295f02e
 # reduce function for x coordinate
 
 # Column No 20:X_COORD_CD
@@ -50,6 +54,10 @@ for line in sys.stdin:
 	if firstline:    #skip first line
 		firstline = False
 		continue
+<<<<<<< HEAD
 	X_COORD_CD=data[19].strip()
+=======
+	X_COORD_CD=data[20].strip()
+>>>>>>> 4e1e14d6e29c6a9e052f66e72a6bee85d295f02e
 	print(X_COORD_CD_check(X_COORD_CD))
 

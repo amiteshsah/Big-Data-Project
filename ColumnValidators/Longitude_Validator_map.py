@@ -54,6 +54,10 @@ for line in sys.stdin:
     if firstline:    #skip first line
         firstline = False
         continue
+<<<<<<< HEAD
     Longitude=data[22].strip()
+=======
+    Longitude=data[23].strip()
+>>>>>>> 4e1e14d6e29c6a9e052f66e72a6bee85d295f02e
     print(Longitude_check(Longitude))
 

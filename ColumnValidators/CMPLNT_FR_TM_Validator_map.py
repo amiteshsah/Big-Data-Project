@@ -60,6 +60,10 @@ for line in sys.stdin:
 	if firstline:    #skip first line
 		firstline = False
 		continue
+<<<<<<< HEAD
 	CMPLNT_FR_TM=data[2]
+=======
+	CMPLNT_FR_TM=data[3]
+>>>>>>> 4e1e14d6e29c6a9e052f66e72a6bee85d295f02e
 	print(CMPLNT_FR_TM_check(CMPLNT_FR_TM))
 	#print(CMPLNT_FR_TM_check(CMPLNT_FR_TM_1))

@@ -54,7 +54,11 @@ for line in sys.stdin:
     if firstline:    #skip first line
         firstline = False
         continue
+<<<<<<< HEAD
     Latitude=data[21].strip()
+=======
+    Latitude=data[22].strip()
+>>>>>>> 4e1e14d6e29c6a9e052f66e72a6bee85d295f02e
     print(Latitude_check(Latitude))
 
 

@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 #!/usr/bin/env python
+=======
+>>>>>>> 4e1e14d6e29c6a9e052f66e72a6bee85d295f02e
 import sys
 import string
 import os
@@ -36,5 +39,9 @@ def juris_desc_Validator(value):
 
 for line in sys.stdin:
     data = list(csv.reader([line], delimiter=','))[0]
+<<<<<<< HEAD
     JURIS_DESC = data[12]
+=======
+    JURIS_DESC = data[13]
+>>>>>>> 4e1e14d6e29c6a9e052f66e72a6bee85d295f02e
     print(juris_desc_Validator(JURIS_DESC))

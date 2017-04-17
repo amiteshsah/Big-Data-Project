@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 #!/usr/bin/env python
+=======
+>>>>>>> 4e1e14d6e29c6a9e052f66e72a6bee85d295f02e
 import sys
 import string
 import os
@@ -29,5 +32,9 @@ def cptd_cd_Validator(value):
 
 for line in sys.stdin:
     data = list(csv.reader([line], delimiter=','))[0]
+<<<<<<< HEAD
     CRM_ATPT_CPTD_CD = str(data[10])
+=======
+    CRM_ATPT_CPTD_CD = str(data[11])
+>>>>>>> 4e1e14d6e29c6a9e052f66e72a6bee85d295f02e
     print(cptd_cd_Validator(CRM_ATPT_CPTD_CD))

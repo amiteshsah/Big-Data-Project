@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 #!/usr/bin/env python
+=======
+>>>>>>> 4e1e14d6e29c6a9e052f66e72a6bee85d295f02e
 import sys
 import string
 import os
@@ -20,6 +23,10 @@ def dateValidator(value):
 
 for line in sys.stdin:
     data = list(csv.reader([line], delimiter=','))[0]
+<<<<<<< HEAD
     KY_CD = str(data[6])
+=======
+    KY_CD = str(data[7])
+>>>>>>> 4e1e14d6e29c6a9e052f66e72a6bee85d295f02e
     print(dateValidator(KY_CD))
 
