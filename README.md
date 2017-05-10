@@ -91,8 +91,10 @@ step 2: Steps needed to run the code :
       hjs -files /home/aks629/Big_Data_Project/Analysis/file_map.py,/home/aks629/Big_Data_Project/Analysis/file_reduce.py -mapper "file_map.py" -reducer "file_reduce.py" -numReduceTasks 1 -input /user/aks629/final_output.csv -output C_out
      
     
-    Part 2:
-    We used Map Reduce to clean NYC 311 Complaint data that had 52 columns. So this is the map reduce code:
+    
+Part 2:
+
+We used Map Reduce to clean NYC 311 Complaint data that had 52 columns. So this is the map reduce code:
 map311.py
 reduce311.py
 Initially we ran with 10 cluster nodes but it would take lot of time to run. So to reduce the running time , we optimized it by changing the number of reducers to 1000 to clean complaint data. We had to include a wrapper mod.sh  so that we could run shapefile in hadoop. 
