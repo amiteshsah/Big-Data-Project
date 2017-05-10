@@ -91,4 +91,26 @@ step 2: Steps needed to run the code :
       hjs -files /home/aks629/Big_Data_Project/Analysis/file_map.py,/home/aks629/Big_Data_Project/Analysis/file_reduce.py -mapper "file_map.py" -reducer "file_reduce.py" -numReduceTasks 1 -input /user/aks629/final_output.csv -output C_out
      
     
-    
+    Part 2:
+    We used Map Reduce to clean NYC 311 Complaint data that had 52 columns. So this is the map reduce code:
+map311.py
+reduce311.py
+Initially we ran with 10 cluster nodes but it would take lot of time to run. So to reduce the running time , we optimized it by changing the number of reducers to 1000 to clean complaint data. We had to include a wrapper mod.sh  so that we could run shapefile in hadoop. 
+This is the command we used to run the code:
+hjs -D mapred.reduce.tasks=1000 -files "mod.sh,map311.py,reduce311.py,query.txt"  -mapper "mod.sh map311.py" -reducer "mod.sh reduce311.py" -input /user/aks629/311.csv -output /user/aks629/final_complaint.out
+
+We then used hfs -getmerge to combine those 1000 output part file and get that file locally. This txt file was converted to csv file by using a simple python code  convert_txt_to_csv.py . 
+
+We used map reduce code to perform JOIN ( set ) operation by NTA code . We had two files CombinedProperties_vs_Neighbourhoods.csv and Crimerate.csv. So we had to merge this two file to one by their NTA code , so that it would be easier to plot the data and prove our hypothesis by Neighbourhood. Following are the map reduce code:
+CombinedRatesperYear_vs_CrimeRate_map.py
+CombinedRatesperYear_vs_CrimeRate_reduce.py
+
+Similar JOIN operation was performed for CombinedProperties_vs_Neighbourhoods.csv and 311_Complaintrate.csv. We used one mapper and one reducer.
+f1_f2_map.py
+f1_f2_reduce.py
+
+
+We wrote the Map Reduce code to assemble all the coordinates where crime was committed in crime data to one list by Neighbourhood name. We used one mapper and 4 reducers.
+map_NTA_coordinates.py
+reduce_NTA_coordinates.py
+
